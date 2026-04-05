@@ -83,7 +83,7 @@ def set_user_preference(user_id: str, preference: UserPreferenceUpdate, db: Sess
     db.commit()
     db.refresh(pref)
     return pref
-
+# router
 @router.get("/users/{user_id}/preferences", response_model=List[UserPreferenceResponse])
 def get_user_preferences(user_id: str, db: Session = Depends(get_db)):
     prefs = db.query(UserPreference).filter(UserPreference.user_id == user_id).all()
